@@ -1,0 +1,44 @@
+.question-card {
+    margin-bottom: 16px;
+    border-radius: 8px;
+    border-left: 4px solid #ff4081;
+    transition: transform 0.2s;
+  }
+  
+  .question-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+  }
+  
+  .description {
+    color: rgba(0, 0, 0, 0.7);
+    margin-bottom: 16px;
+  }
+  
+  .tags-container {
+    margin-bottom: 12px;
+  }
+  
+  .tag-chip {
+    font-size: 12px;
+    min-height: 24px;
+    padding: 0 8px;
+    background-color: #ffcdd2 !important;
+    color: #c62828 !important;
+  }
+  
+  .date-container {
+    display: flex;
+    align-items: center;
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 12px;
+  }
+  
+  .date-container mat-icon {
+    font-size: 16px;
+    height: 16px;
+    width: 16px;
+    margin-right: 4px;
+  }
+  

@@ -1,0 +1,22 @@
+<mat-card class="question-card" [routerLink]="['/questions',question.id]">
+    <mat-card-header>
+      <mat-card-title>{{ question.title }}</mat-card-title>
+    </mat-card-header>
+  
+    <mat-card-content>
+      <p class="description">{{ question.description | truncate: 150 }}</p>
+  
+      <div class="tags-container">
+        <mat-chip-set>
+          <mat-chip *ngFor="let tag of question.tags" color="accent" class="tag-chip">
+            {{ tag }}
+          </mat-chip>
+        </mat-chip-set>
+      </div>
+  
+      <div class="date-container">
+        <mat-icon>calendar_today</mat-icon>
+        <span>{{ question.created_at | date: 'mediumDate' }}</span>
+      </div>
+    </mat-card-content>
+</mat-card>

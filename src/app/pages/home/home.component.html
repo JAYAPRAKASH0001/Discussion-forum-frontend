@@ -1,0 +1,8 @@
+<div class="home-container">
+  <h1>Recent Questions</h1>
+
+  <div class="questions-list">
+    <app-question-card *ngFor="let question of questions" [question]="question">
+    </app-question-card>
+  </div>
+</div>

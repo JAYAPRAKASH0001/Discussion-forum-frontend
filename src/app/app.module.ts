@@ -18,12 +18,20 @@ import { MatChipsModule } from '@angular/material/chips';
 
 import { TopbarComponent } from './components/topbar/topbar.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { HomeComponent } from './pages/home/home.component';
+import { QuestionCardComponent } from './components/question-card/question-card.component';
+import { TruncatePipe } from './pipes/truncate.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     TopbarComponent,
-    SidebarComponent
+    SidebarComponent,
+    NotFoundComponent,
+    HomeComponent,
+    QuestionCardComponent,
+    TruncatePipe
   ],
   imports: [
     BrowserModule,
