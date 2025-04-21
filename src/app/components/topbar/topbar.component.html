@@ -1,0 +1,17 @@
+<mat-toolbar color="primary" class="topbar">
+  <button *ngIf="isHandset" mat-icon-button (click)="toggleSidenav.emit()">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <div class="logo">
+    <mat-icon>forum</mat-icon>
+    <span>Discussion Forum</span>
+  </div>
+
+  <span class="spacer"></span>
+  
+  <button mat-raised-button color="accent" class="ask-button" [routerLink]="['/questions/new']">
+    <mat-icon>add</mat-icon>
+    Ask Question
+  </button>
+</mat-toolbar>
