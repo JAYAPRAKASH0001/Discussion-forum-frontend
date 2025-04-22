@@ -16,6 +16,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 import { TopbarComponent } from './components/topbar/topbar.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
@@ -27,6 +29,7 @@ import { QuestionFormComponent } from './components/question-form/question-form.
 import { QuestionDetailsComponent } from './components/question-details/question-details.component';
 import { AnswerComponent } from './components/answer/answer.component';
 import { TagSearchComponent } from './pages/tag-search/tag-search.component';
+import { QuestionsComponent } from './pages/questions/questions.component';
 
 
 @NgModule({
@@ -41,7 +44,8 @@ import { TagSearchComponent } from './pages/tag-search/tag-search.component';
     QuestionFormComponent,
     QuestionDetailsComponent,
     AnswerComponent,
-    TagSearchComponent
+    TagSearchComponent,
+    QuestionsComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +61,9 @@ import { TagSearchComponent } from './pages/tag-search/tag-search.component';
     MatInputModule,
     MatListModule,
     MatCardModule,
-    MatChipsModule
+    MatChipsModule,
+    MatButtonToggleModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -12,7 +12,7 @@ export class TagSearchComponent {
   tag: string = '';
   questions: any[] = [];
   lastSearchedTag: string = '';
-  notFound = false;
+  notFound: boolean = false;
 
   constructor(
     private route: ActivatedRoute,

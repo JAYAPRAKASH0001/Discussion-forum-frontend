@@ -6,9 +6,11 @@ import { QuestionFormComponent } from './components/question-form/question-form.
 import { QuestionDetailsComponent } from './components/question-details/question-details.component';
 import { AnswerComponent } from './components/answer/answer.component';
 import { TagSearchComponent } from './pages/tag-search/tag-search.component';
+import { QuestionsComponent } from './pages/questions/questions.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
+  { path: 'questions', component: QuestionsComponent},
   { path: 'questions/new', component: QuestionFormComponent },
   { path: 'tags', component: TagSearchComponent},
   { path: 'tags/:tag', component: TagSearchComponent},

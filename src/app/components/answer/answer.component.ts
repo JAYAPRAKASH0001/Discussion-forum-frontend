@@ -6,17 +6,20 @@ import { AnswerService } from 'src/app/services/answer.service';
 @Component({
   selector: 'app-answer',
   templateUrl: './answer.component.html',
-  styleUrls: ['./answer.component.css']
+  styleUrls: ['./answer.component.css'],
 })
-export class AnswerComponent implements OnInit{
+export class AnswerComponent implements OnInit {
   answers: Answer[] = [];
   questionId!: number;
   newAnswer: any;
-  constructor(private route: ActivatedRoute, private answerService: AnswerService){}
+  constructor(
+    private route: ActivatedRoute,
+    private answerService: AnswerService
+  ) {}
 
   ngOnInit(): void {
     const id = this.route.parent?.snapshot.paramMap.get('id');
-    if(id){
+    if (id) {
       this.questionId = +id;
       this.getAnswers(this.questionId);
     }
@@ -29,28 +32,28 @@ export class AnswerComponent implements OnInit{
       },
       error: (err: any) => {
         console.error('Error loading answers:', err);
-      }
+      },
     });
   }
 
   createAnswer(): void {
     this.answerService.createAnswer(this.questionId, this.newAnswer).subscribe({
-      next: ()=> {
+      next: () => {
         alert(`Answer Added Successfully`);
         this.getAnswers(this.questionId);
       },
       error: (err: any) => {
         console.error('Error creating answer', err);
-      }
-    })
+      },
+    });
   }
-  
+
   likeAnswer(answerId: number): void {
     this.answerService.likeAnswer(answerId).subscribe({
       next: () => this.getAnswers(this.questionId),
       error: (err: any) => {
         console.error('Error liking answer:', err);
-      }
+      },
     });
   }
 
@@ -59,16 +62,20 @@ export class AnswerComponent implements OnInit{
       next: () => this.getAnswers(this.questionId),
       error: (err: any) => {
         console.error('Error disliking answer:', err);
-      }
+      },
     });
   }
 
   deleteAnswer(answerId: number): void {
-    this.answerService.deleteAnswer(answerId).subscribe({
-      next: () => this.getAnswers(this.questionId),
-      error: (err: any) => {
-        console.error('Error deleting answer:', err);
-      }
-    });
+    const confirmDelete = window.confirm('Are you sure you want to delete this answer?');
+
+    if (confirmDelete) {
+      this.answerService.deleteAnswer(answerId).subscribe({
+        next: () => this.getAnswers(this.questionId),
+        error: (err: any) => {
+          console.error('Error deleting answer:', err);
+        },
+      });
+    }
   }
 }

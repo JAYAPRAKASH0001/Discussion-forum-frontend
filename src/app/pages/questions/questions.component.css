@@ -1,0 +1,15 @@
+.question-topbar {
+    display: flex;
+    justify-content: space-between;
+}
+
+.search-container{
+    display: flex;
+    gap: 10px;
+}
+
+.searchSubmit, .back-button{
+    margin-top: 9px;
+}
+
+

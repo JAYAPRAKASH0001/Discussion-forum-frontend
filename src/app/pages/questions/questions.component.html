@@ -1,0 +1,42 @@
+<div class="question-topbar">
+  <div class="filter-sort-bar" *ngIf="!isSearchMode">
+    <mat-button-toggle-group [value]="filter" (change)="changeSort($event.value)">
+      <mat-button-toggle value="newest">Newest</mat-button-toggle>
+      <mat-button-toggle value="oldest">Oldest</mat-button-toggle>
+      <mat-button-toggle value="unanswered">Unanswered</mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+
+  <div *ngIf="isSearchMode">
+    <button mat-raised-button class="back-button" color="accent" (click)="clearSearch()">
+      Back to All Questions
+    </button>
+  </div>
+
+  <div class="search-container">
+    <mat-form-field appearance="outline">
+      <mat-label>Search by keyword</mat-label>
+      <input matInput type="text" [(ngModel)]="keyword" (keyup.enter)="onSearchSubmit()">
+    </mat-form-field>
+    <button mat-raised-button class="searchSubmit" color="primary" (click)="onSearchSubmit()">
+      Search
+    </button>
+  </div>
+</div>
+
+<div class="questions-container">
+  <div *ngIf="notFound" class="not-found-message">
+    <p>No questions found</p>
+  </div>
+
+  <div *ngIf="questions.length > 0">
+    <app-question-card *ngFor="let question of questions" [question]="question"></app-question-card>
+  </div>
+</div>
+
+<mat-paginator
+  [length]="totalQuestions"
+  [pageSize]="pageSize"
+  [pageSizeOptions]="[5, 10, 20]"
+  (page)="onPageChange($event)">
+</mat-paginator>
