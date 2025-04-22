@@ -26,6 +26,7 @@ import { TruncatePipe } from './pipes/truncate.pipe';
 import { QuestionFormComponent } from './components/question-form/question-form.component';
 import { QuestionDetailsComponent } from './components/question-details/question-details.component';
 import { AnswerComponent } from './components/answer/answer.component';
+import { TagSearchComponent } from './pages/tag-search/tag-search.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { AnswerComponent } from './components/answer/answer.component';
     TruncatePipe,
     QuestionFormComponent,
     QuestionDetailsComponent,
-    AnswerComponent
+    AnswerComponent,
+    TagSearchComponent
   ],
   imports: [
     BrowserModule,

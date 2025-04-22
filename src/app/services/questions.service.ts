@@ -21,6 +21,10 @@ export class QuestionsService {
   }
 
   getQueationById(id: number): Observable<any>{
-    return this.http.get(`${this.apiUrl}/${id}`);
+    return this.http.get<any>(`${this.apiUrl}/${id}`);
+  }
+
+  getQuestionByTag(tag: string): Observable<any>{
+    return this.http.get<any>(`${this.apiUrl}/tag/${tag}`);
   }
 }

@@ -1,0 +1,24 @@
+.search-container {
+  display: flex;
+  gap: 10px;
+  margin: 20px 0;
+  align-items: flex-start;
+  padding-bottom: 20px;
+}
+
+mat-form-field {
+  flex: 1;
+  padding: 8px;
+  font-size: 16px;
+  height: 48px;
+}
+
+.not-found-message {
+  color: red;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.tagSubmit{
+    margin-top: 10px;
+}
