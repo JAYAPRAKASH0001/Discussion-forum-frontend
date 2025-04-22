@@ -15,4 +15,12 @@ export class QuestionsService {
   getAllQuestions(): Observable<any> {
     return this.http.get<any>(this.apiUrl);
   }
+
+  createQuestion(question: Question): Observable<any> {
+    return this.http.post(`${this.apiUrl}/new`, question);
+  }
+
+  getQueationById(id: number): Observable<any>{
+    return this.http.get(`${this.apiUrl}/${id}`);
+  }
 }

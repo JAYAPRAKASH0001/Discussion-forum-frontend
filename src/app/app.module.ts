@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -22,6 +23,10 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { HomeComponent } from './pages/home/home.component';
 import { QuestionCardComponent } from './components/question-card/question-card.component';
 import { TruncatePipe } from './pipes/truncate.pipe';
+import { QuestionFormComponent } from './components/question-form/question-form.component';
+import { QuestionDetailsComponent } from './components/question-details/question-details.component';
+import { AnswerComponent } from './components/answer/answer.component';
+
 
 @NgModule({
   declarations: [
@@ -31,13 +36,17 @@ import { TruncatePipe } from './pipes/truncate.pipe';
     NotFoundComponent,
     HomeComponent,
     QuestionCardComponent,
-    TruncatePipe
+    TruncatePipe,
+    QuestionFormComponent,
+    QuestionDetailsComponent,
+    AnswerComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    FormsModule,
     MatSidenavModule,
     MatToolbarModule,
     MatIconModule,

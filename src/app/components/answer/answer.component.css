@@ -1,0 +1,70 @@
+.answer-card {
+  margin-bottom: 16px;
+  border-radius: 8px;
+  border-left: 4px solid #ff4081;
+  transition: transform 0.2s;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.answer-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.answer-details {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+}
+
+.answer-detail-content {
+  display: flex;
+  align-items: center;
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 14px;
+}
+
+.answer-detail-content mat-icon {
+  font-size: 16px;
+  height: 16px;
+  width: 16px;
+  margin-right: 4px;
+}
+
+.action-icons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.action-icons button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(0, 0, 0, 0.6);
+  margin-right: 8px;
+}
+
+.action-icons mat-icon {
+  margin-right: 4px;
+}
+
+mat-icon {
+  fill: white; /* If your theme uses white icons */
+}
+
+.answer-input-container {
+  position: sticky;
+  bottom: 0;
+  background: white;
+  padding: 1rem;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.full-width {
+  flex: 1;
+}

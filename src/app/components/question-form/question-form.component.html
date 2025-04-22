@@ -1,0 +1,56 @@
+<mat-card class="container">
+  <mat-card-title class="headline">Ask a New Question</mat-card-title>
+
+  <form (ngSubmit)="submitForm()" #questionForm="ngForm">
+    <!-- Title -->
+    <mat-form-field class="full-width">
+      <mat-label>Title</mat-label>
+      <input matInput name="title" [(ngModel)]="question.title" required minlength="5" #title="ngModel"/>
+    </mat-form-field>
+    <p *ngIf="title.invalid && title.touched">
+      <span *ngIf="title.errors?.['required']">⚠ Title is required.</span>
+      <span *ngIf="title.errors?.['minlength']">⚠ At least 5 characters.</span>
+    </p>
+
+    <!-- Description -->
+    <mat-form-field class="full-width">
+      <mat-label>Description</mat-label>
+      <textarea matInput name="description" [(ngModel)]="question.description" required minlength="10"#description="ngModel"></textarea>
+    </mat-form-field>
+    <p *ngIf="description.invalid && description.touched">
+      <span *ngIf="description.errors?.['required']">⚠ Description is required.</span>
+      <span *ngIf="description.errors?.['minlength']">⚠ Minimum 10 characters required.</span>
+    </p>
+
+    <!-- Tags -->
+    <mat-form-field class="full-width">
+      <mat-label>Tags (press Enter or comma)</mat-label>
+      <mat-chip-grid #chipGrid aria-label="Enter tags">
+        <mat-chip-row
+            class="tag-chip"
+            *ngFor="let tag of question.tags"
+            (removed)="removeTag(tag)"
+        >
+          {{ tag }}
+          <button matChipRemove [attr.aria-label]="'Remove ' + tag">
+            <mat-icon>cancel</mat-icon>
+          </button>
+        </mat-chip-row>
+        <input #tagInput 
+            placeholder="Add a tag..."
+            [matChipInputFor]="chipGrid"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            [matChipInputAddOnBlur]="addOnBlur"
+            (matChipInputTokenEnd)="addTag($event)"
+        />
+      </mat-chip-grid>
+    </mat-form-field>
+
+    <!-- Submit -->
+    <div class="btn">
+        <button mat-raised-button color="primary" type="submit" [disabled]="questionForm.invalid">
+        Submit Question
+        </button>
+    </div>
+  </form>
+</mat-card>

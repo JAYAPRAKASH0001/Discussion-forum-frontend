@@ -1,0 +1,39 @@
+<h2>Answers</h2>
+
+<div class="answers" *ngIf="answers && answers.length > 0">
+  <mat-card *ngFor="let answer of answers" class="answer-card">
+    <mat-card-content>
+      <p class="content">{{ answer?.answer_text }}</p>
+      <div class="answer-details">
+        <div class="answer-detail-content">
+          <mat-icon>calendar_today</mat-icon>
+          {{ answer?.created_at | date : "mediumDate" }}
+        </div>
+        <div class="action-icons">
+          <button mat-icon-button (click)="likeAnswer(answer.id)">
+            <mat-icon>thumb_up</mat-icon>
+          </button>
+          <span>{{ answer?.likes }}</span>
+          <button mat-icon-button (click)="dislikeAnswer(answer.id)">
+            <mat-icon>thumb_down</mat-icon>
+          </button>
+          <span>{{ answer?.dislikes }}</span>
+          <button mat-icon-button (click)="deleteAnswer(answer.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+<div class="no-answers" *ngIf="!answers || answers.length === 0">
+  <p>No answers yet. Be the first to answer!</p>
+</div>
+
+<div class="answer-input-container">
+  <mat-form-field class="full-width">
+    <mat-label>Write your answer...</mat-label>
+    <textarea matInput [(ngModel)]="newAnswer" rows="2"></textarea>
+  </mat-form-field>
+  <button mat-raised-button color="primary" (click)="createAnswer()">Submit</button>
+</div>

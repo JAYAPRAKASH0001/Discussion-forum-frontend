@@ -1,0 +1,33 @@
+<div class="question-detail-container">
+  <mat-card class="question-card">
+    <mat-card-header>
+      <mat-card-title>{{ question?.title }}</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <p class="description">{{ question?.description }}</p>
+
+      <div class="tags-container">
+        <mat-chip-set>
+          <mat-chip *ngFor="let tag of question?.tags" color="accent" class="tag-chip">
+            {{ tag }}
+          </mat-chip>
+        </mat-chip-set>
+      </div>
+
+      <div class="date-container">
+        <mat-icon>calendar_today</mat-icon>
+        <span>{{ question?.created_at | date : "mediumDate" }}</span>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <div class="button-container" *ngIf = "!showAnswers">
+    <button 
+      mat-raised-button 
+      color="accent" 
+      [routerLink]="['answers']">
+      Show Answers
+    </button>
+  </div> 
+</div>
+<router-outlet></router-outlet>
