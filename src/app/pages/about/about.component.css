@@ -1,0 +1,54 @@
+.about-us-container {
+  text-align: center;
+  padding: 32px;
+}
+
+.team-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.description {
+  padding-bottom: 30px;
+  font-size: 16px;
+}
+
+.member-card {
+  width: 300px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 16px;
+}
+
+.member-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 20px rgba(255, 64, 129, 0.5);
+}
+
+.header-center {
+  width: 100%;
+  text-align: center;
+}
+
+mat-card-title,
+mat-card-subtitle {
+  display: block;
+  text-align: center;
+}
+
+mat-card-content {
+  padding: 10px;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.social-icons img {
+  width: 28px;
+  height: 28px;
+}

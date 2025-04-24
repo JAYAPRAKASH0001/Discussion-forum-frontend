@@ -30,6 +30,7 @@ import { QuestionDetailsComponent } from './components/question-details/question
 import { AnswerComponent } from './components/answer/answer.component';
 import { TagSearchComponent } from './pages/tag-search/tag-search.component';
 import { QuestionsComponent } from './pages/questions/questions.component';
+import { AboutComponent } from './pages/about/about.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { QuestionsComponent } from './pages/questions/questions.component';
     QuestionDetailsComponent,
     AnswerComponent,
     TagSearchComponent,
-    QuestionsComponent
+    QuestionsComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

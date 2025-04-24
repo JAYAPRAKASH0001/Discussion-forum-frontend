@@ -7,6 +7,7 @@ import { QuestionDetailsComponent } from './components/question-details/question
 import { AnswerComponent } from './components/answer/answer.component';
 import { TagSearchComponent } from './pages/tag-search/tag-search.component';
 import { QuestionsComponent } from './pages/questions/questions.component';
+import { AboutComponent } from './pages/about/about.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -21,6 +22,7 @@ const routes: Routes = [
       { path: 'answers', component: AnswerComponent },
     ],
   },
+  { path: 'about', component: AboutComponent},
   { path: '**', component: NotFoundComponent },
 ];
 

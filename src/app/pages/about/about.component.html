@@ -1,0 +1,40 @@
+<div class="about-us-container">
+  <h1>About Us</h1>
+  <p class="description">
+    The Discussion Forum is a full-stack web application that enables users to
+    post questions, provide answers, explore discussions, and interact through
+    likes and dislikes. It features a clean and intuitive interface with question
+    cards, detailed answer views, and tag-based searching for easy topic
+    discovery. Built with Angular, Node.js (TypeScript), and MySQL, the project
+    showcases core web development practices including CRUD operations, API
+    integration, pagination, and dynamic UI rendering.
+  </p>
+  <h2>Meet the Team</h2>
+  <div class="team-container">
+    <mat-card class="member-card" *ngFor="let member of team">
+      <mat-card-header>
+        <div class="header-center">
+          <mat-card-title>{{ member.name }}</mat-card-title>
+          <mat-card-subtitle>{{ member.role }}</mat-card-subtitle>
+        </div>
+      </mat-card-header>
+      
+      <mat-card-actions class="social-icons">
+        <a mat-icon-button [href]="member.linkedin" target="_blank" aria-label="LinkedIn">
+          <img src="../../../assets/icons/linkedin-icon.png" alt="LinkedIn">
+        </a>
+        <a mat-icon-button [href]="member.github" target="_blank" aria-label="GitHub">
+          <img src="../../../assets/icons/github-icon.png" alt="GitHub">
+        </a>
+        <a mat-icon-button [href]="'mailto:' + member.email" aria-label="Email">
+          <img src="../../../assets/icons/gmail-icon.png" alt="Email">
+        </a>
+      </mat-card-actions>
+  
+      <mat-card-content>
+        <p>{{ member.description }}</p>
+      </mat-card-content>
+      
+    </mat-card>
+  </div>
+</div>
