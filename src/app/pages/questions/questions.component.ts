@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { QuestionsService } from 'src/app/services/questions.service';
 
@@ -7,7 +7,7 @@ import { QuestionsService } from 'src/app/services/questions.service';
   templateUrl: './questions.component.html',
   styleUrls: ['./questions.component.css']
 })
-export class QuestionsComponent {
+export class QuestionsComponent implements OnInit{
   questions: any[] = [];
   totalQuestions: number = 0;
   pageSize: number = 10;
@@ -47,7 +47,7 @@ export class QuestionsComponent {
         next: (res) => {
           this.questions = res.data;
           this.totalQuestions = res.pagination.totalQuestions;
-          this.notFound = res.length ===0
+          this.notFound = res.data.length === 0;
         },
         error: ()=> {
           this.questions = [];
@@ -60,8 +60,8 @@ export class QuestionsComponent {
     this.questionsService.searchQuestions(keyword).subscribe({
       next: (res) => {
         this.questions = res.data;
-        this.totalQuestions = res.pagination.totalQuestions;
-        this.notFound = res.length ===0
+        this.totalQuestions = res.pagination?.totalQuestions || res.data.length || 0;
+        this.notFound = res.data.length === 0;
       },
       error: ()=> {
         this.questions = [];
@@ -74,58 +74,34 @@ export class QuestionsComponent {
     this.pageSize = event.pageSize;
     this.currentPage = event.pageIndex + 1;
 
-    this.router.navigate([], {
-      relativeTo: this.route,
-      queryParams: {
-        filter: this.filter,
-        page: this.currentPage,
-        limit: this.pageSize
-      },
-      queryParamsHandling: 'merge'
-    });
+    this.updateQueryParams({ page: this.currentPage, limit: this.pageSize });
   }
 
   changeSort(filter: string) {
     this.filter = filter;
     this.currentPage = 1;
 
-    this.router.navigate([], {
-      relativeTo: this.route,
-      queryParams: {
-        filter: this.filter,
-        page: this.currentPage,
-        limit: this.pageSize
-      },
-      queryParamsHandling: 'merge'
-    });
+    this.updateQueryParams({ filter: this.filter, page: 1 });
   }
 
   onSearchSubmit() {
     const trimmed = this.keyword.trim();
     if(trimmed) {
-      this.router.navigate([], {
-        relativeTo: this.route,
-        queryParams: {
-          search: trimmed,
-          page: 1,
-          limit:10,
-          filter: null,
-        },
-        queryParamsHandling: 'merge'
-      });
+      this.updateQueryParams({ search: trimmed, page: 1, filter: null });
+      this.fetchQuestionByKeyword(trimmed);
     }
-    this.fetchQuestionByKeyword(trimmed);
   }
 
   clearSearch() {
     this.keyword = '';
+    this.updateQueryParams({ search: null, filter: 'newest', page: 1 });
+  }  
+
+  private updateQueryParams(params: any) {
     this.router.navigate([], {
       relativeTo: this.route,
-      queryParams: {
-        search: null,
-        filer: 'newest' 
-      },
+      queryParams: params,
       queryParamsHandling: 'merge'
     });
-  }  
+  }
 }

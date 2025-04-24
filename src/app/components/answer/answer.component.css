@@ -28,7 +28,6 @@
   font-size: 16px;
   height: 16px;
   width: 16px;
-  margin-right: 4px;
 }
 
 .action-icons {
@@ -49,10 +48,6 @@
   margin-right: 4px;
 }
 
-mat-icon {
-  fill: white; /* If your theme uses white icons */
-}
-
 .answer-input-container {
   position: sticky;
   bottom: 0;
@@ -67,4 +62,15 @@ mat-icon {
 
 .full-width {
   flex: 1;
+}
+
+.load-more-btn {
+  text-align: center;
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.no-answers p{
+  text-align: center;
+  font-size: 20PX;
 }

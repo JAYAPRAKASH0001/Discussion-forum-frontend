@@ -25,6 +25,9 @@
       </div>
     </mat-card-content>
   </mat-card>
+  <div *ngIf="displayCount < allAnswers.length" class="load-more-btn">
+    <button mat-raised-button color="accent" (click)="loadMore()">Load More</button>
+  </div>
 </div>
 <div class="no-answers" *ngIf="!answers || answers.length === 0">
   <p>No answers yet. Be the first to answer!</p>

@@ -34,7 +34,8 @@
   </div>
 </div>
 
-<mat-paginator
+<mat-paginator 
+  *ngIf="questions.length > 0"
   [length]="totalQuestions"
   [pageSize]="pageSize"
   [pageSizeOptions]="[5, 10, 20]"

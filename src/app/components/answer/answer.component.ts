@@ -12,6 +12,9 @@ export class AnswerComponent implements OnInit {
   answers: Answer[] = [];
   questionId!: number;
   newAnswer: any;
+  allAnswers: Answer[] = [];
+  displayCount: number = 5;
+
   constructor(
     private route: ActivatedRoute,
     private answerService: AnswerService
@@ -28,7 +31,8 @@ export class AnswerComponent implements OnInit {
   getAnswers(id: number): void {
     this.answerService.getAllAnswers(id).subscribe({
       next: (response: any) => {
-        this.answers = response.answers;
+        this.allAnswers = response.answers;
+        this.answers = this.allAnswers.slice(0, this.displayCount);
       },
       error: (err: any) => {
         console.error('Error loading answers:', err);
@@ -40,6 +44,7 @@ export class AnswerComponent implements OnInit {
     this.answerService.createAnswer(this.questionId, this.newAnswer).subscribe({
       next: () => {
         alert(`Answer Added Successfully`);
+        this.newAnswer = '';
         this.getAnswers(this.questionId);
       },
       error: (err: any) => {
@@ -77,5 +82,10 @@ export class AnswerComponent implements OnInit {
         },
       });
     }
+  }
+
+  loadMore(): void {
+    this.displayCount += 5;
+    this.answers = this.allAnswers.slice(0, this.displayCount);
   }
 }
