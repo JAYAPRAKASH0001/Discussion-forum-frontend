@@ -1,15 +1,18 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { ApiConfigService } from './api-config.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AnswerService {
 
-  private apiUrl = "http://localhost:3000/api";
+  private apiUrl;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private apiOb: ApiConfigService) { 
+    this.apiUrl = apiOb.getBaseUrl();
+  }
 
   getAllAnswers(questionId: number): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/questions/${questionId}/answers`);

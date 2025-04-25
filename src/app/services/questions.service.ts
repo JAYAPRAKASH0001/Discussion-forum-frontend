@@ -2,15 +2,18 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Question } from '../models/question';
+import { ApiConfigService } from './api-config.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class QuestionsService {
 
-  private apiUrl = "http://localhost:3000/api/questions";
+  private apiUrl;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private apiOb: ApiConfigService) {
+    this.apiUrl = apiOb.getBaseUrl() + "/questions";
+  }
 
   getAllQuestions(filter?: string, page?: number, limit?: number): Observable<any> {
     let queryParams = [];
